@@ -20,15 +20,3 @@ router.register("orders", OrderViewSet)
 urlpatterns = [path("", include(router.urls))]
 
 app_name = "cinema"
-
-{"tickets": [
-    {
-        "movie_session": 7,
-        "seat": 1,
-        "row": 1
-    },
-    {
-        "movie_session": 8,
-        "seat": 2,
-        "row": 1
-    }]}

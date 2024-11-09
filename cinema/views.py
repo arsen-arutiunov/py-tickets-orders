@@ -100,7 +100,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
         if movie:
             queryset = queryset.filter(movie__id=movie)
 
-        if self.action in "list":
+        if self.action == "list":
             queryset = (
                 queryset
                 .select_related()
@@ -127,7 +127,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = self.queryset.filter(user=self.request.user)
 
-        if self.action in "list":
+        if self.action == "list":
             queryset = queryset.prefetch_related(
                 "tickets__movie_session__movie")
         return queryset
@@ -138,7 +138,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         serializer = self.serializer_class
 
-        if self.action in "list":
+        if self.action == "list":
             serializer = OrderListSerializer
 
         return serializer
